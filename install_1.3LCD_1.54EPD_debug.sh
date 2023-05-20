@@ -2,11 +2,11 @@
 set -e
 
 # Check and install required tools
-REQUIRED_TOOLS=("wget" "tar" "git" "make" "pip3" "7z" "cmake" "vim" "nano")
-for tool in "${REQUIRED_TOOLS[@]}"; do
+declare -A REQUIRED_TOOLS=( ["wget"]="wget" ["tar"]="tar" ["git"]="git" ["make"]="make" ["pip3"]="python3-pip" ["7z"]="p7zip-full" ["cmake"]="cmake" ["vim"]="vim" ["nano"]="nano")
+for tool in "${!REQUIRED_TOOLS[@]}"; do
     if ! command -v $tool >/dev/null 2>&1; then
         echo "$tool is required but it's not installed. Trying to install..."
-        if sudo apt-get install -y $tool; then
+        if sudo apt-get install -y ${REQUIRED_TOOLS[$tool]}; then
             echo "$tool installation succeeded."
         else
             echo "$tool installation failed. Aborting."
