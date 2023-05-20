@@ -3,7 +3,7 @@
 This repository contains configuration files and installation scripts for setting up a Raspberry Pi with various tools and libraries. The setup includes enabling SPI, installing required tools and libraries, and configuring the display resolution.
 
 ```bash
-chmod +x < the file >
+chmod +x <the file>
 ```
 
 1. enabling SPI, installing required tools and libraries and reboot
@@ -22,23 +22,6 @@ sudo ./auto_start_LCD.sh
 ```bash
 sudo ./backtoHDMI.sh
 ```
-
-## Prerequisites
-
-Before proceeding with the installation, please make sure the following tools are installed on your Raspberry Pi:
-
-```bash
-- wget
-- tar
-- git
-- make
-- pip3
-- 7z
-- cmake
-- vim
-- nano
-```
-If any of these tools are missing, the installation script will attempt to install them automatically.
 
 ## Installation Steps
 
@@ -68,3 +51,37 @@ If any of these tools are missing, the installation script will attempt to insta
 
 2. **Reverting** auto-start, display resolution, and specific modifications Changes
 
+## GPIO setting for dual display
+
+#### 1.54-inch e-Paper Display GPIO
+
+| e-Paper | Raspberry Pi BCM | Raspberry Pi Physical Pin |
+|---------|------------------|---------------------------|
+| VCC     | 3.3V             | 1 or 17                   |
+| GND     | GND              | 6, 9, 14, 20, 25, 30, 34 or 39 |
+| DIN     | MOSI             | 19                        |
+| CLK     | SCLK             | 23                        |
+| CS      | 7                | 26                        |
+| DC      | 25               | 22                        |
+| RST     | 17               | 11                        |
+| BUSY    | 22               | 15                        |
+
+
+#### 1.3-inch SPI Display GPIO
+
+| PIN           | Raspberry Pi BCM | Raspberry Pi Physical Pin | Description                        |
+|---------------|------------------|---------------------------|------------------------------------|
+| KEY1          | 21               | 40                        | KEY1GPIO                           |
+| KEY2          | 20               | 38                        | KEY2GPIO                           |
+| KEY3          | 16               | 36                        | KEY3GPIO                           |
+| Joystick UP   | 6                | 31                        | Upward direction of the Joystick   |
+| Joystick Down | 19               | 35                        | Downward direction of the Joystick |
+| Joystick Left | 5                | 29                        | Left direction of the Joystick     |
+| Joystick Right| 26               | 37                        | Right direction of the Joystick    |
+| Joystick Press| 13               | 33                        | Press the Joystick                 |
+| SCLK          | 11               | 23                        | SPI clock line                     |
+| MOSI          | 10               | 19                        | SPI data line                      |
+| CS            | 8                | 24                        | Chip selection                     |
+| DC            | 25               | 22                        | Data/Command control               |
+| RST           | 27               | 13                        | Reset                              |
+| BL            | 24               | 18                        | Backlight                          |
