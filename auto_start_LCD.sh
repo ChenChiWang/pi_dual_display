@@ -18,10 +18,13 @@ hdmi_group=2
 hdmi_mode=87
 display_rotate=0" | sudo tee -a /boot/config.txt
 
-# Comment out lines in [pi4] part for Raspberry Pi 4B
-if grep -q "Raspberry Pi 4" /proc/device-tree/model
-then
-    sudo sed -i 's/^\s*dtoverlay=vc4-kms-v3d/#dtoverlay=vc4-kms-v3d/' /boot/config.txt
-    sudo sed -i 's/^\s*max_framebuffers=2/#max_framebuffers=2/' /boot/config.txt
-fi
+# # Comment out lines in [pi4] part for Raspberry Pi 4B
+# if grep -q "Raspberry Pi 4" /proc/device-tree/model
+# then
+#     sudo sed -i 's/^\s*dtoverlay=vc4-kms-v3d/#dtoverlay=vc4-kms-v3d/' /boot/config.txt
+#     sudo sed -i 's/^\s*max_framebuffers=2/#max_framebuffers=2/' /boot/config.txt
+# fi
+
+sudo sed -i 's/^\s*dtoverlay=vc4-kms-v3d/#dtoverlay=vc4-kms-v3d/' /boot/config.txt
+sudo sed -i 's/^\s*max_framebuffers=2/#max_framebuffers=2/' /boot/config.txt
 
