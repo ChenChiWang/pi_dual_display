@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Current user's home directory
-HOME_DIR="/home/${SUDO_USER}"
+HOME_DIR="/home/${SUDO_USER}/pi_dual_display"
 
 # Backup original files
 sudo cp /etc/rc.local /etc/rc.local.bak
